@@ -1,0 +1,47 @@
+﻿body {
+    background-color: #212121;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text-style {
+    text-align: center;
+    font-size: 40px;
+    font-family: Consolas;
+    color: #F2ECFF;
+}
+
+code {
+    width: 400px
+}
+
+.writing-text:after {
+    content: ' ';
+    display: inline-block;
+    background: rgba(120,120,120,0.7);
+    position: relative;
+    width: 10px;
+    height: 1.1em;
+    vertical-align: middle;
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-timing-funciton: ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1
+    }
+    50% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0
+    }
+}
