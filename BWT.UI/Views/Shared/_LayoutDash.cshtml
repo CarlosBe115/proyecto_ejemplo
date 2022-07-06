@@ -1,0 +1,229 @@
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <!-- Favicons -->
+    <link href="~/img/favicon.ico" rel="icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="~/assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="../Dash/Index" class="logo d-flex align-items-center">
+                <img src="/img/BWR.svg" alt="">
+                <span class="d-none d-lg-block">Black Warriors</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+
+
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+
+                <!--<li class="nav-item d-block d-lg-none">
+                <a class="nav-link nav-icon search-bar-toggle " href="#">
+                    <i class="bi bi-search"></i>
+                </a>
+            </li>-->
+                <!-- End Search Icon-->
+
+                <li class="nav-item dropdown pe-3">
+
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">@Context.Session.GetString("names")</span>
+                    </a><!-- End Profile Iamge Icon -->
+
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                        <li class="dropdown-header">
+
+                            <span>@Context.Session.GetString("nametag")</span>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            @if (Context.Session.GetString("names") == "No hay información")
+                            {
+                                <a class="dropdown-item d-flex align-items-center" href="../User/RegisterInfo">
+                                    <i class="bi bi-person"></i>
+                                    <span>Registra tu información</span>
+                                </a>
+
+                            }
+                            else
+                            {
+                                <a class="dropdown-item d-flex align-items-center" href="../User/InfoPersonal">
+                                    <i class="bi bi-person"></i>
+                                    <span>Perfil</span>
+                                </a>
+
+                            }
+
+
+
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item d-flex align-items-center" href="@Url.Content("~/User/Logout")">
+                                <i class="bi bi-box-arrow-right"></i>
+                                <span>Cerrar Sesión</span>
+                            </a>
+                        </li>
+
+                    </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+
+            </ul>
+        </nav><!-- End Icons Navigation -->
+    </header><!-- End Header -->
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="../Dash/Index">
+                    <i class="bi bi-grid"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-shield"></i><span>Clanes</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="../Clan/ListClans">
+                            <i class="bi bi-card-checklist"></i>
+                            <span>Lista de Clanes</span>
+                        </a>
+                    </li>
+
+                    <li>
+
+                        @{
+                            if (Context.Session.GetInt32("IsOwnerClan") == 1)
+                            {
+
+                            }
+                            else
+                            {
+                                <a href="../Clan/RegisterClans">
+                                    <i class="bi bi-plus-circle-fill"></i>
+                                    <span>Registrar Clan</span>
+                                </a>
+                            }
+                        }
+
+
+
+                    </li>
+
+                </ul>
+            </li><!-- End Components Nav -->
+            @if (Context.Session.GetInt32("Rol") == 2)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-controller"></i><span>Videojuegos</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="../Games/ListGames">
+                                <i class="bi bi-card-checklist"></i>
+                                <span>Lista de Juegos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../Games/Create">
+                                <i class="bi bi-plus-circle-fill"></i>
+                                <span>Agregar elemento</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav2" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-people"></i><span>Usuarios</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="forms-nav2" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="../User/ListUser">
+                                <i class="bi bi-people"></i>
+                                <span>Lista de usuarios</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+            }
+
+
+            @*SOLO LO DEBE VER EL ADMIN*@
+            <li class="nav-heading">Ajustes</li>
+            @if (Context.Session.GetString("names") == "No hay información")
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="../User/RegisterInfo">
+                        <i class="bi bi-person"></i>
+                        <span>Registra tu información</span>
+                    </a>
+                </li>
+
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="../User/InfoPersonal">
+                        <i class="bi bi-person"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+
+            }
+
+        </ul>
+
+    </aside><!-- End Sidebar-->
+    <div id="main" class="main">
+        @RenderBody()
+    </div>
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/chart.js/chart.min.js"></script>
+    <script src="~/assets/vendor/echarts/echarts.min.js"></script>
+    <script src="~/assets/vendor/quill/quill.min.js"></script>
+    <script src="~/assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="~/assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
+</body>
+</html>

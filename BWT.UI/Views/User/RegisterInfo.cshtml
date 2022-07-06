@@ -1,0 +1,136 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Register Información";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+
+}
+<div class="pagetitle">
+    <h1>Mi perfil</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../Dash/Index">Home</a></li>
+            <li class="breadcrumb-item">Mi perfil</li>
+            <li class="breadcrumb-item active">Guardar Información</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Información</h5>
+                    <!-- Multi Columns Form -->
+                    <p class="text-success">
+                        @TempData["message"]
+                    </p>
+                    <form class="row g-3" method="post" asp-controller="User" asp-action="RegisterInfo">
+
+                        <div class="col-md-12">
+                            <label for="inputEmail5" class="form-label">Nombre(s)</label>
+                            <input type="text" placeholder="Nombre" class="form-control" name="FullNames" required maxlength="75">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputEmail5" class="form-label">Apellido(s)</label>
+                            <input type="text" placeholder="Apellido" class="form-control" name="LastNames" required maxlength="75">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">GameTag</label>
+                            <input type="text" placeholder="GameTag" class="form-control" name="NameTag" required maxlength="20">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" placeholder="Nacimiento" class="form-control" name="BirthDay" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">Género</label>
+
+                            <select id="gender" name="Gender" class="form-control">
+                                <option value="Hombre">Hombre</option>
+                                <option value="Mujer">Mujer</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary mt-3">Guardar Información</button>
+                            <a class="btn btn-secondary" href="../Dash/Index">Regresar</a>
+                        </div>
+                    </form><!-- End Multi Columns Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!----<body>
+  <div class="container">
+      <div class="d-flex justify-content-center align-items-center flex-wrap mt-5">
+          <div class="form-card mt-5">
+              <div class="card">
+                  <div class="card-form">
+                      <h4 class="text-center text-muted fs-08 mt-3">Registrar información</h4>
+                      <p class="text-danger text-center"></p>
+                       method="post" asp-controller="User" asp-action="RegisterInfo">
+                          <!-- Text input-->
+<!--<div class="form-group">
+    <label class="col-md-12 control-label" for="names">Nombre(s)</label>
+    <div class="col-md-8">
+        <input id="names" name="FullNames" type="text" placeholder="placeholder" class="form-control input-md" required="">
+    </div>
+</div>-->
+<!-- Text input-->
+<!--<div class="form-group">
+    <label class="col-md-12 control-label" for="apellido">Apellido(s)</label>
+    <div class="col-md-8">
+        <input id="apellido" name="LastNames" type="text" placeholder="placeholder" class="form-control input-md" required="">
+    </div>
+</div>
+<div class="form-group">
+    <label class="col-md-12 control-label" for="nametag">Gametag</label>
+    <div class="col-md-8">
+        <input id="nametag" name="NameTag" type="text" placeholder="placeholder" class="form-control input-md" required="">
+    </div>
+</div>-->
+<!-- Text input-->
+<!--<div class="form-group">
+        <label class="col-md-12 control-label" for="date">Nacimiento:</label>
+        <div class="col-md-8">
+            <input id="date" name="BirthDay" type="date" placeholder="placeholder" class="form-control input-md" required="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-12 control-label" for="gender">Género</label>
+        <div class="col-md-8">
+            <select id="gender" name="Gender" class="form-control">
+                <option value="Hombre">Hombre</option>
+                <option value="Mujer">Mujer</option>
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Guardar Información</button>
+    <div class="d-flex align-items-center input-field"> <span class="far fa-envelope text-muted"></span> <input type="email" placeholder="Email" class="form-control" required name="EmailAddress"> </div>
+    <div class="d-flex align-items-center input-field"> <span class="fas fa-key text-muted"></span> <input type="password" placeholder="Password" class="form-control" required name="EmailPassword"> </div>
+</form>-->
+
+<!--@*<div class="d-flex align-items-center"> <input type="checkbox" name="remember" id="remember"> <label class="text-muted ms-2" for="remember">Remember me</label> </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="pagetitle">
+    <h1>Mi perfil</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../Dash/Index">Home</a></li>
+            <li class="breadcrumb-item">Mi perfil</li>
+            <li class="breadcrumb-item active">Información</li>
+        </ol>
+    </nav>
+</div>-->
+
+

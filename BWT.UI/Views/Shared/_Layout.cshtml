@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Black Warriors</title>
+    <link href="~/img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="~/css/site.css" />
+
+</head>
+<body>
+        <section class="navbar fixed-top navbar-expand-lg navbar-dark p-md-2">
+            <div class="container">
+                <a href="#" class="navbar-brand">
+                    <img src="~/img/logo2.0.svg" alt="Brand Black Warriors Team">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Barra de navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <div class="nav ms-auto">
+                        <a href="#menu" class="nav-link active">Inicio</a>
+                        <a href="#colaboradores" class="nav-link">Colaboradores</a>
+                        <a href="#patrocinadores" class="nav-link">Patrocinadores</a>
+                        <a href="#faq" class="nav-link">FAQ</a>
+                        <a href="@Url.Content("~/User/Validation")" class="nav-link">Iniciar Sesión</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

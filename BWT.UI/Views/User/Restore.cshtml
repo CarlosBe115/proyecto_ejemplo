@@ -1,0 +1,49 @@
+﻿@{
+    Layout = null;
+
+    var token = ViewBag.Token;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Restore</title>
+    <link href="~/img/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="~/css/login.css" />
+    <script type="text/javascript" src="~/js/login.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center flex-wrap mt-5">
+            <div class="form-card mt-5">
+                <div class="card">
+                    <div class="card-form">
+                        <p class="text-center text-muted fs-08 mt-3">Proporcionar tu correo para iniciar la recuperación</p>
+                        <form method="post" asp-controller="User" asp-action="Restore">
+
+                                <input type="text" placeholder="Token" value="@token" class="form-control" hidden required name="TokenValidation">
+
+                            <div class="d-flex align-items-center input-field">
+                                <span class="far fa-envelope text-muted"></span>
+                                <input type="text" placeholder="Contraseña" class="form-control" required name="EmailPassword1">
+                            </div>
+                            <div class="d-flex align-items-center input-field">
+                                <span class="far fa-envelope text-muted"></span>
+                                <input type="text" placeholder="Confirmar Contraseña" class="form-control" required name="EmailPassword2">
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary mt-3">Restaurar</button>
+                            </div>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

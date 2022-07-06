@@ -1,0 +1,88 @@
+﻿@{
+    ViewData["Title"] = "Clanes";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+    var listclan = (ApiResponse<Clans>)ViewBag.clanone;
+    var listmembers = (ApiResponse<IEnumerable<UserClan>>)ViewBag.listmembers;
+    var listmembers2 = listmembers.Data.Where(x => x.FkClan == listclan.Data.Id);
+    var listinfo = (ApiResponse<IEnumerable<UserInfo>>)ViewBag.listinfo;
+
+}
+<div class="pagetitle">
+    <h1>Clanes</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../Dash/Index">Home</a></li>
+            <li class="breadcrumb-item">Clanes</li>
+            <li class="breadcrumb-item active">Mi Clan - Miembros</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <!-- Top Selling -->
+    <div class="col-12">
+        <div class="card top-selling overflow-auto">
+
+            <div class="card-body pb-0">
+                <h5 class="card-title">Mi clan <span>BWT </span></h5>
+
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre del Clan</th>
+                            <th scope="col">Abreviación</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Usuarios</th>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <th scope="row">@listclan.Data.NameClan</th>
+                        <td>@listclan.Data.Abbreviation</td>
+                        <td>@listclan.Data.DescriptionClan</td>
+                        <td>@listclan.Data.CurrentUser de @listclan.Data.LimitUser</td>
+                    </tr>
+                </table>
+                <h5 class="card-title">Miembros <span>BWT </span></h5>
+                @TempData["message"]
+            <table class="table table-borderless">
+                <thead>
+                    <tr>
+                        <th scope="col">Nametag</th>
+                        <th scope="col">Nombre(s)</th>
+                        <th scope="col">Fecha de ingreso</th>
+                    </tr>
+                </thead>
+                @if (listmembers == null)
+                {
+                    <tr>No hay miembros aún...</tr>
+                }
+                else
+                {
+                    @foreach (var i in listmembers2)
+                     {
+
+                        <tr>
+                            <td>@listinfo.Data.FirstOrDefault(x => x.Id == i.FkUser).NameTag.ToString()</td>
+                            <td>@listinfo.Data.FirstOrDefault(x => x.Id == i.FkUser).FullNames.ToString()</td>
+                            <td>@i.DateRegister.ToString("yyyy-MM-dd")</td>
+                            <td>
+                                @if (listclan.Data.FKUserCreator != i.FkUser)
+                                {
+                                    <form asp-controller="Clan" asp-action="DeleteMember">
+                                        <input name="idclan" value="@listclan.Data.Id" hidden />
+                                        <input name="idmember" value="@i.Id" hidden />
+                                        <button type="submit" class="btn btn-success">Eliminar</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <p>Líder</p>
+                                }
+                            </td>
+                        </tr>
+                     }
+                }
+            </table>
+            </div>
+        </div>
+    </div>
+</div>

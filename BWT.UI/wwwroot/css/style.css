@@ -1,0 +1,150 @@
+:root{
+    /*----------> BASE COLORS FOR THE SITE*/
+    --color-dark: #333333;
+    /**/
+    --color-blue-primary: #5ab3ff ;
+    --color-blue-secondary: #80f6ff;
+    --color-purple-primary: #2c2d61;
+    --color-yellow-primary: #fcb831;
+    --color-orange: #DE710A;
+}
+section[id]{
+    scroll-margin-top: 75px;
+}
+logi {
+    scroll-margin-top: 75px;
+}
+@font-face {
+    font-family: 'newletter';
+    src: url(../Custom/go3v2.ttf);
+}
+/*----------> GENERAL STYLE*/
+body{
+    background-color: var(--color-dark);
+}
+html{
+    scroll-behavior: smooth;
+}
+.header{
+    background: url(../img/backgroudbar.jpg) no-repeat center;
+    background-size: cover;
+    min-height: 100vh;
+}
+.header .navbar {
+    background-color: transparent !important;
+}
+a.nav-link{
+    color:white;
+}
+a.nav-link:hover{
+    color: var(--color-yellow-primary);
+    text-decoration: underline var(--color-yellow-primary);
+    text-underline-offset: 9px;
+}
+/*----------> Nav*/
+.navbar-brand > img{
+    width: 250px;
+}
+.frase {
+    font-size: 50px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+}
+.card{
+    border: none;
+}
+.banner-image{
+    background-image: url(../img/642073.jpg) ;
+    position:absolute;
+    background-size: cover;
+    box-shadow: #333333;
+    position: relative;
+    background-attachment: fixed;
+}
+.banner-image:before{
+    content:'';
+	position: absolute;
+        top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0,0,0,0.6);
+}
+/*--------------------> CLIENTS */
+.titulo{
+    font-weight: bold;
+    font-size: 50px;
+    -webkit-text-stroke: var(--color-purple-primary);
+    color: white;
+}
+.bsponsors{
+    width: 30%;
+    transition: transform .2s; 
+}
+.bsponsors:hover{
+    transform: scale(1.5); 
+}
+.card{
+    transition: all 400ms ease;
+    vertical-align: bottom;
+}
+.card:hover{
+    box-shadow: 5px 1px 10px rgba(255,255,255,0.8);
+    transform: translateY(-3%);
+}
+.bprueba{
+    width: 100%;
+    margin-top: 15%;
+    color: #fff;    
+    padding: 15px;
+    position: absolute;
+}
+.logoimg{
+    float: right;
+    align-items: center;
+    margin: auto;
+    width: 40%;
+    position: relative;
+}
+
+.btext{
+    float: left;
+    margin: auto;
+    margin-left: 20px;
+    width: 55%;
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-align:left;
+    vertical-align: middle;
+    position: absolute;
+}
+.boton{
+    margin-top: 18%;
+    margin-left: 3%;
+}
+/*------------------ Colaboradores------------------------------*/
+.ctext{
+    color: white;
+    -webkit-text-stroke: .8px var(--color-dark);
+    font-weight: bold;
+}
+.wtext{
+    color: white;
+    font-weight: bold;
+    font-size: 20px
+}
+.qtext{
+    color: white;
+    font-size: 15px;
+}
+.foo{
+    background-color: transparent !important;
+}
+
+/*---------------------------------------------------------LOGIN---------------------------*/
+}

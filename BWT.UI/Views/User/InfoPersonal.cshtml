@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewData["Title"] = "Información Personal";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+    var info = (ApiResponse<UserInfo>)ViewBag.info;
+}
+
+<div class="pagetitle">
+    <h1>Mi perfil</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../Dash/Index">Home</a></li>
+            <li class="breadcrumb-item">Mi perfil</li>
+            <li class="breadcrumb-item active">Información</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Información</h5>
+                    <!-- Multi Columns Form -->
+                    <p class="text-success">
+                        @TempData["message"]
+                    </p>
+                    <form class="row g-3" method="post" asp-controller="User" asp-action="UpdateInfo">
+
+                        <div class="col-md-12">
+                            <label for="inputEmail5" class="form-label">Nombre(s)</label>
+                            <input type="text" class="form-control" name="FullNames" value="@info.Data.FullNames" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputEmail5" class="form-label">Apellido(s)</label>
+                            <input type="text" class="form-control" name="LastNames" value="@info.Data.LastNames" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">GameTag</label>
+                            <input type="text" class="form-control" name="NameTag" value="@info.Data.NameTag" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">Género</label>
+                            <input type="text" class="form-control" name="Gender" value="@info.Data.Gender" readonly>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputPassword5" class="form-label">Fecha de nacimiento</label>
+                            <input type="date" class="form-control" name="BirthDay" value="@info.Data.BirthDay.ToString("yyyy-MM-dd")" readonly>
+                        </div>
+                        <input type="text" class="form-control" name="Id" value="@info.Data.Id" hidden>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <a class="btn btn-secondary" href="../Dash/Index">Regresar</a>
+                        </div>
+                    </form><!-- End Multi Columns Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewData["Title"] = "RegisterClans";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+    var listgames = (ApiResponse<IEnumerable<Games>>)ViewBag.listgames;
+}
+
+<div class="pagetitle">
+    <h1>Crear Clan</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../Dash/Index">Home</a></li>
+            <li class="breadcrumb-item">Clanes</li>
+            <li class="breadcrumb-item active">Crear Clan</li>
+        </ol>
+    </nav>
+</div>
+<section class="section">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Creación de Clan</h5>
+                    <!-- Multi Columns Form -->
+                    <p class="text-danger">
+                        @TempData["message"]
+                    </p>
+                    <form class="row g-3" method="post" asp-controller="Clan" asp-action="RegisterClans">
+                        <div class="col-md-12">
+                            <label for="inputName5" class="form-label">Nombre del Clan</label>
+                            <input type="text" class="form-control" name="NameClan" maxlength="25">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="inputEmail5" class="form-label">Abreviación</label>
+                            <input type="text" class="form-control" name="Abbreviation" maxlength="3">
+                        </div>
+                        <div class="col-md-6">
+                            @*<label for="inputPassword5" class="form-label">Descripción del clan</label>*@
+                            <textarea class="form-control" name="DescriptionClan"> Descripción del clan</textarea>
+                        </div>
+                        <div class="col-12">
+                            <label for="inputAddress5" class="form-label">Videjuego</label>
+                            <select class="form-select" name="FkGames" aria-label="Default select example">
+                                <option selected>Selecciona un videojuego</option>
+
+                                @foreach (var i in listgames.Data)
+                                {
+                                    <option value="@i.Id">@i.NameGame
+                                    </option>
+                                 }
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Crear</button>
+                            <button type="reset" class="btn btn-secondary">Cancelar</button>
+                        </div>
+                    </form><!-- End Multi Columns Form -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

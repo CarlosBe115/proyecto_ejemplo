@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Http;
+@{
+
+    ViewData["Title"] = "Clanes";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+    var listclan = (ApiResponse<IEnumerable<Clans>>)ViewBag.listclan;
+}
+<div class="pagetitle">
+    <h1>Clanes</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../Dash/Index">Home</a></li>
+            <li class="breadcrumb-item">Clanes</li>
+            <li class="breadcrumb-item active">Lista de Clanes</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card top-selling overflow-auto">
+
+            <div class="card-body pb-0">
+                <h5 class="card-title">Lista de Clanes <span>BWT </span></h5>
+                @{
+                    if (Context.Session.GetInt32("IsOwnerClan") == 1)
+                    {
+                        <form asp-controller="Clan" asp-action="VerClan">
+                            <input hidden name="id" value="@Context.Session.GetInt32("clan")" />
+                            <button type="submit" class="btn btn-outline-warning">Ver tu Clan</button>
+                        </form>
+                    }
+                    else
+                    {}
+                }
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre del Clan</th>
+                            <th scope="col">Abreviación</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Usuarios</th>
+                            <th scope="col"></th>
+
+                        </tr>
+                    </thead>
+                    @foreach (var i in listclan.Data)
+                     {
+                        <tr>
+                            <th scope="row">@i.NameClan</th>
+                            <td>@i.Abbreviation</td>
+                            <td>@i.DescriptionClan</td>
+                            <td>@i.CurrentUser de @i.LimitUser</td>
+                            <td>
+                                <form asp-controller="Clan" asp-action="addmembers">
+                                    <input name="id" value="@i.Id" hidden />
+                                    <button type="submit" class="btn btn-success">Unirse</button>
+                                </form>
+                            </td>
+                        </tr>
+                     }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

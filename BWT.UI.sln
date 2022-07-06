@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32126.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BWT.UI", "BWT.UI\BWT.UI.csproj", "{AB3428AE-2AE3-45DD-B6CC-F8C5C4B5BAAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB3428AE-2AE3-45DD-B6CC-F8C5C4B5BAAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB3428AE-2AE3-45DD-B6CC-F8C5C4B5BAAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB3428AE-2AE3-45DD-B6CC-F8C5C4B5BAAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB3428AE-2AE3-45DD-B6CC-F8C5C4B5BAAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C5F4F38B-B3B5-4E3D-9871-FBE1C9750BF6}
+	EndGlobalSection
+EndGlobal

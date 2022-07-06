@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Games";
+    Layout = "~/Views/Shared/_LayoutDash.cshtml";
+    var listuser = (ApiResponse<IEnumerable<Access>>)ViewBag.listuser;
+}
+
+<div class="pagetitle">
+    <h1>Usuarios</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../Dash/Index">Home</a></li>
+            <li class="breadcrumb-item">Usuarios</li>
+            <li class="breadcrumb-item active">Lista de Usuarios</li>
+        </ol>
+    </nav>
+</div>
+<div class="row">
+    <!-- Top Selling -->
+    <div class="col-12">
+        <div class="card top-selling overflow-auto">
+
+            <div class="card-body pb-0">
+                <h5 class="card-title">Lista de Usuarios <span>BWT </span></h5>
+
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col">Correos</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var i in listuser.Data)
+                        {
+                            <tr>
+                                <td>@i.EmailAddress</td>
+
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
